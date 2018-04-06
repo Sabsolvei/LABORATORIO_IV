@@ -1,0 +1,21 @@
+<h1 >{{title}}</h1>
+<hr>
+<nav>
+    <p-menu #menu popup="popup" [model]="items"></p-menu>
+    <button type="button" pButton icon="fa fa-list" label="Show" (click)="menu.toggle($event)"></button>
+
+    <input [(ngModel)]="title" type="text" >
+    <a [routerLink]="['/home']" [routerLinkActive]="['activado']">Home -</a>
+
+    <a [routerLink]="['/fruta']" [routerLinkActive]="['activado']">Fruta -</a>
+
+    <a [routerLink]="['/empleado']" [routerLinkActive]="['activado']">Empleado -</a>
+
+    <a [routerLink]="['/contacto']" [routerLinkActive]="['activado']">Contacto -</a>
+
+    <a [routerLink]="['/coches']" [routerLinkActive]="['activado']">Coches </a>
+
+    <a [routerLink]="['/padre']" [routerLinkActive]="['activado']">PADRE </a>
+
+</nav>
+<router-outlet></router-outlet>

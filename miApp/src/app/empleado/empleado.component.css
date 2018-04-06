@@ -1,0 +1,19 @@
+h1 {
+  background-color: yellow;  
+}
+
+.fondoAzul {
+  background: lightblue;
+}
+
+.letraAzul {
+  color: blue;
+}
+
+.letraVerde{
+  color: green; 
+}
+
+.letraGrande{
+  font-size: 40px; 
+}

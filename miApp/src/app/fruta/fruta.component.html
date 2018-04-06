@@ -1,0 +1,36 @@
+<h1>
+    La mejor fruta es: {{ fruta.nombre }} !
+</h1>
+
+
+<br/>
+<br/>
+<div *ngIf="trabajador_externo == true">
+    <button (click)="cambiarExterno(false)">Mostrar Lista de Frutas</button>
+    <ul>
+        <li>{{fruta.nombre}}</li>
+        <li>{{fruta.color}}</li>
+        <li>{{fruta.madura}}</li>
+    </ul>
+</div>
+<br/>
+<br/>
+
+
+<div *ngIf="trabajador_externo == false">
+    <button (click)="cambiarExterno(true)">Mostrar Fruta Unica</button>
+    <hr/>
+    <h3>
+        LISTADO DE FRUTAS:
+    </h3>
+    <ul *ngFor="let fr of listaDeFrutas; let i = index">
+        <li *ngIf="fr.madura == true"><strong>Frutas {{i+1}}:</strong>
+            <ul>
+                <li>{{fr.nombre}}</li>
+                <li>{{fr.color}}</li>
+                <li>{{fr.madura}}</li>
+            </ul>
+        </li>
+    </ul>
+
+</div>

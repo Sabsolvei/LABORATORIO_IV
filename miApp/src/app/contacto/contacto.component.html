@@ -1,0 +1,26 @@
+<h2>{{titulo}}</h2>
+<div *ngIf="parametro">
+    <p>Parametro de la url: {{parametro}}</p>
+</div>
+
+<div *ngIf="!parametro">
+    <button (click)="redirigir()">Ir a la pagina con parametro</button>
+    <button (click)="redirigirAHome()">Ir a la pagina principal</button>
+</div>
+<br>
+<hr>
+<div *ngIf="administrador; then admin else noAdmin"></div>
+
+
+
+<ng-template #admin>
+    <button pButton label="Cambiar a false" (click)="cambiar(false)"></button>
+    <strong style="background:yellow;">Eres el administrador de la webapp</strong>
+</ng-template>
+
+
+
+<ng-template #noAdmin>
+    <p-button label="Cambiar a true" (click)="cambiar(true)"></p-button>
+    <strong style="background:red;">No eres el admin de la web</strong>
+</ng-template>

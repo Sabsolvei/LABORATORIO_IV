@@ -1,0 +1,20 @@
+<h2>
+  {{title}}
+</h2>
+
+<app-hijo [propUno]="'Valor de propiedad UNO'"
+          [propDos]="'Valor de propiedad DOS'"
+          [texto]="'Valor de propiedad TRES = TEXTO'"
+          [propDePadre1]="dato_externo"
+          [propDePadre2]="datosExtJSON"
+          (datosDelHijo)="RecibirYUsarDatosDelHijo($event)"
+          >
+</app-hijo>
+<div *ngIf="datosDesdeHijo">
+  <p>ID: {{datosDesdeHijo.id}}</p>
+  <p>NOMBRE: {{datosDesdeHijo.alias}}</p>
+</div>
+
+<!-- <p>NOMBRE: {{datosDesdeHijo.alias}}</p>  el ngIf sirve poruqe sino da error, poruqe intenta mostrar un dato que aun no existe -->
+
+

@@ -1,0 +1,118 @@
+<h1>
+    El mejor empleado del mes es: {{ empleado.nombre }} !
+</h1>
+
+<button (click)="saludar()">SALUDAR!</button>
+
+<br>
+<br>
+<hr>
+<form action="">
+    <input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="persona.nombre" required>
+    <input type="text" name="apellido" #apellido="ngModel" [(ngModel)]="persona.apellido" required>
+    <input type="text" name="edad" #edad="ngModel" [(ngModel)]="persona.edad" required>
+    <input type="submit"  value="GUARDAR CON SUBMIT" (click)="persona.Guardar()">
+    <button (click)="persona.Traer()">TRAER</button>
+</form>
+<hr>
+<br>
+<label for=""><strong>DATOS PERSONA: </strong></label>
+<input type="text" [(ngModel)]="persona.nombre">
+<input type="text" [(ngModel)]="persona.apellido">
+<input type="text" [(ngModel)]="persona.edad">
+<input type="submit">
+<button (click)="persona.Guardar()">GUARDAR LA PERSONA</button>
+
+<br>
+<br>
+
+<hr>
+<br>
+<div *ngIf="trabajador_externo == true">
+    <button (click)="cambiarExterno(false)">Mostrar Trabajadores</button>
+    <ul>
+        <li>{{empleado.nombre}}</li>
+        <li>{{empleado.edad}}</li>
+        <li>{{empleado.cargo}}</li>
+        <li>{{empleado.contratado}}</li>
+    </ul>
+</div>
+<br/>
+<br/>
+
+
+<div *ngIf="trabajador_externo == false">
+    <button (click)="cambiarExterno(true)">Mostrar Empleado</button>
+    <!-- <ul *ngIf="trabajadores[0].contratado == true">
+        <li>{{trabajadores[0].nombre}}</li>
+        <li>{{trabajadores[0].edad}}</li>
+        <li>{{trabajadores[0].cargo}}</li>
+        <li>{{trabajadores[0].contratado}}</li>
+    </ul>
+    <ul *ngIf="trabajadores[1].contratado == true">
+        <li>{{trabajadores[1].nombre}}</li>
+        <li>{{trabajadores[1].edad}}</li>
+        <li>{{trabajadores[1].cargo}}</li>
+        <li>{{trabajadores[1].contratado}}</li>
+    </ul>
+    <ul *ngIf="trabajadores[2].contratado == true">
+        <li>{{trabajadores[2].nombre}}</li>
+        <li>{{trabajadores[2].edad}}</li>
+        <li>{{trabajadores[2].cargo}}</li>
+        <li>{{trabajadores[2].contratado}}</li>
+    </ul> -->
+    <hr/>
+    <h3>
+        LISTADO DE EMPLEADOS:
+    </h3>
+    <ul *ngFor="let emp of trabajadores; let i = index">
+        <li *ngIf="emp.contratado == true"><strong>Empleado {{i+1}}:</strong>
+            <ul>
+                <li>{{emp.nombre}}</li>
+                <li>{{emp.edad}}</li>
+                <li>{{emp.cargo}}</li>
+                <li>{{emp.contratado}}</li>
+            </ul>
+        </li>
+    </ul>
+
+</div>
+
+<hr/>
+<h3>COLORES SWITCH</h3>
+<ul [ngSwitch]="color">
+    <li *ngSwitchCase="'red'" [ngStyle]="{'background':color, 'color': 'white', 'padding':'20px'}">Es de color rojo</li>
+    <li *ngSwitchCase="'blue'" [ngStyle]="{'background':color, 'color': 'white', 'padding':'20px'}">Es de color azul</li>
+    <li *ngSwitchCase="'green'" [ngStyle]="{'background':color, 'color': 'white', 'padding':'20px'}">Es de color verde</li>
+</ul>
+
+
+
+<hr/>
+<h3>SELECTOR DE COLORES</h3>
+<button (click)="logColorSeleccionado()">MOSTRAR CONSOLA LOG</button>
+<input type="text" [(ngModel)]="color_seleccionado" />
+<!-- cada vez que agregue alg oal input, se modificara la propieda de la clase del componente -->
+<!-- ngModel es directiva de Two Way Binding -->
+
+<pre [style.border]="color_seleccionado == 'red' ? '5px solid black' : '5px solid green'" [class.fondoAzul]="color_seleccionado == 'blue'"
+    [ngClass]="{
+        letraAzul: color_seleccionado == 'blue',
+        letraVerde: color_seleccionado == 'green',
+        letraGrande: 1 == 1 
+    }"><strong>COLOR ELEGIDO:</strong>  {{ color_seleccionado }}</pre>
+<!-- [ngClass]="['letraAzul', 'letraGrande']" esta es para agregar clases por default fijas-->
+
+
+<div [ngStyle]="{'background':color_seleccionado, 
+                'width': '150px',
+                'height': '150px', 
+                'float': 'right',
+                'margin-right':'69%'}">
+</div>
+<div style="clear:both"></div>
+
+<!-- Directivas:
+- Condicionales y estructuras de controls (asterisco)
+- Eventos (parentesis)
+- Binding (corchetes) -->
